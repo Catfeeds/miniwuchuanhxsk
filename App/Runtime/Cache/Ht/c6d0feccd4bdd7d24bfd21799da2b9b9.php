@@ -107,7 +107,7 @@
         </dd>
     </dl> -->
         <dl id="menu-admin">
-            <dt><i class="Hui-iconfont">&#xe62e;</i>&nbsp&nbsp产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dt><i class="Hui-iconfont">&#xe62e;</i>&nbsp&nbsp食物产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
                     <li><a data-href="<?php echo U('Product/add');?>" data-title="添加产品" href="javascript:void(0)">添加产品</a></li>
@@ -133,6 +133,22 @@
             </ul>
         </dd>
     </dl>
+
+    <dl id="menu-admin">
+            <dt><i class="Hui-iconfont">&#xe62e;</i>&nbsp&nbsp娱乐产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="<?php echo U('Hotel/add');?>" data-title="添加酒店房间" href="javascript:void(0)">添加酒店房间</a></li>
+                    <li><a data-href="<?php echo U('Hotel/index');?>" data-title="酒店房间管理" href="javascript:void(0)">酒店房间管理</a></li>
+                     <li><a data-href="<?php echo U('Ktvmanage/add');?>" data-title="添加KTV套餐" href="javascript:void(0)">添加KTV套餐</a></li>
+                    <li><a data-href="<?php echo U('Ktvmanage/index');?>" data-title="KTV套餐管理" href="javascript:void(0)">KTV套餐管理</a></li>
+                     <li><a data-href="<?php echo U('Manage/add');?>" data-title="添加其他套餐" href="javascript:void(0)">添加其他套餐</a></li>
+                    <li><a data-href="<?php echo U('Manage/index');?>" data-title="其他套餐管理" href="javascript:void(0)">其他套餐管理</a></li>
+                </ul>
+        </dd>
+    </dl>
+
+
     <!-- <dl id="menu-tongji">
             <dt><i class="Hui-iconfont">&#xe62e;</i>&nbsp&nbsp抢购产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
