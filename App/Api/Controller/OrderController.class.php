@@ -315,7 +315,7 @@ class OrderController extends PublicController {
 		$pro = $orderp->where('order_id='.intval($order_info['id']))->select();
 		foreach ($pro as $k => $v) {
 			$pro[$k]['photo_x'] = __DATAURL__.$v['photo_x'];
-			$pro[$k]['price_yh'] = M('attr_spec_price_store')->where('id="'.$v['pid'].'"')->getField('price_yh');
+			$pro[$k]['price_yh'] = $v['price'];
 
 		}
 		

@@ -12,26 +12,35 @@ class ShoppingController extends PublicController {
         $shopping=M("shopping_char");
         $shangchang=M("shangchang");
         $product=M("product");
+        $product2=M("product2");
 		$user_id = intval($_REQUEST['user_id']);
 		if (!$user_id) {
 			echo json_encode(array('status'=>0));
 			exit();
 		}
 
-		$cart = $shopping->where('uid='.intval($user_id))->field('id,uid,pid,price,num')->select();
-		$pid = M('attr_spec_price_store')->where('id="'.$cart[0]['pid'].'"')->getField('pid');
+		$cart = $shopping->where('uid='.intval($user_id))->field('id,uid,pid,price,num,type')->select();
+		
         foreach ($cart as $k => $v) {
-        	$pro_info = $product->where('id='.intval($pid))->field('name,photo_x')->find();
-        	$cart[$k]['pro_name']=mb_substr($pro_info['name'], 0 , 20 ,"utf-8")."...";
-        	$cart[$k]['photo_x']=__DATAURL__.$pro_info['photo_x'];
-        	$attr_value_id = M('attr_spec_price_store')->where('id="'.$v['pid'].'"')->getField('attr_value_id');
-        	$spec_value_id = M('attr_spec_price_store')->where('id="'.$v['pid'].'"')->getField('spec_value_id');
-        	$cart[$k]['attr_value'] = M('attr_value')->where('id="'.$attr_value_id.'"')->getField('name');
-        	$attr_id = M('attr_value')->where('id="'.$attr_value_id.'"')->getField('attr_id');
-        	$cart[$k]['attr_name'] = M('attribute')->where('id="'.$attr_id.'"')->getField('attr_name');
-        	$cart[$k]['spec_value'] = M('spec_value')->where('id="'.$spec_value_id.'"')->getField('spec_value');
-        	$spec_id = M('spec_value')->where('id="'.$spec_value_id.'"')->getField('spec_id');
-        	$cart[$k]['spec_name'] = M('spec')->where('id="'.$spec_id.'"')->getField('spec_name');
+        	if($v['type']==2){
+        		$pid = M('attr_spec_price_store')->where('id="'.$v['pid'].'"')->getField('pid');
+        		$pro_info = $product->where('id='.intval($pid))->field('name,photo_x')->find();
+	        	$cart[$k]['pro_name']=mb_substr($pro_info['name'], 0 , 20 ,"utf-8")."...";
+	        	$cart[$k]['photo_x']=__DATAURL__.$pro_info['photo_x'];
+	        	$attr_value_id = M('attr_spec_price_store')->where('id="'.$v['pid'].'"')->getField('attr_value_id');
+	        	$spec_value_id = M('attr_spec_price_store')->where('id="'.$v['pid'].'"')->getField('spec_value_id');
+	        	$cart[$k]['attr_value'] = M('attr_value')->where('id="'.$attr_value_id.'"')->getField('name');
+	        	$attr_id = M('attr_value')->where('id="'.$attr_value_id.'"')->getField('attr_id');
+	        	$cart[$k]['attr_name'] = M('attribute')->where('id="'.$attr_id.'"')->getField('attr_name');
+	        	$cart[$k]['spec_value'] = M('spec_value')->where('id="'.$spec_value_id.'"')->getField('spec_value');
+	        	$spec_id = M('spec_value')->where('id="'.$spec_value_id.'"')->getField('spec_id');
+	        	$cart[$k]['spec_name'] = M('spec')->where('id="'.$spec_id.'"')->getField('spec_name');
+        	}else{
+        		$pro_info = $product2->where('id='.intval($v['pid']))->find();
+	        	$cart[$k]['pro_name']=mb_substr($pro_info['name'], 0 , 20 ,"utf-8")."...";
+	        	$cart[$k]['photo_x']=__DATAURL__.$pro_info['photo'];
+        	}
+        	
         }
 
 		echo json_encode(array('status'=>1,'cart'=>$cart));
@@ -79,11 +88,20 @@ class ShoppingController extends PublicController {
 		}
 
 		//检测库存
-		$pro_num = M('attr_spec_price_store')->where('id='.intval($check['pid']))->getField('store');
-		if($num>intval($pro_num)){
-			echo json_encode(array('status'=>0,'err'=>'库存不足！'));
-			exit();
+		if(intval($_REQUEST['stype']==2)){
+			$pro_num = M('attr_spec_price_store')->where('id='.intval($check['pid']))->getField('store');
+			if($num>intval($pro_num)){
+				echo json_encode(array('status'=>0,'err'=>'库存不足！'));
+				exit();
+			}
+		}else{
+			$pro_num = M('product2')->where('id='.intval($check['pid']))->getField('stock');
+			if($num>intval($pro_num)){
+				echo json_encode(array('status'=>0,'err'=>'库存不足！'));
+				exit();
+			}
 		}
+		
 		
 		$data=array();
 		$data['num']=$num;
@@ -131,43 +149,71 @@ class ShoppingController extends PublicController {
 			echo json_encode(array('status'=>0,'err'=>'系统错误.'));
 			exit();
 		}
-		//加入购物车
-		$check = $this->check_cart(intval($_POST['pid']));
-		if ($check['status']==0) {
-			echo json_encode(array('status'=>0,'err'=>$check['err']));
-			exit;
-		}
-
-		$check_info = M('product')->where('id='.intval($_POST['pid']).' AND del=0 AND is_down=0')->find();
-		$shpp=M("shopping_char");
-		$shu=trim($_POST['val'],',');
-
-		//判断购物车内是否已经存在该商品
-		$data = array();
-		$cart_info = $shpp->where('pid='.intval($_POST['ppid']).' AND uid='.intval($_POST['uid']))->field('id,num')->find();
-		if ($cart_info) {
-			$data['num'] = intval($cart_info['num'])+intval($_POST['num']);
-			$shpp->where('id='.intval($cart_info['id']))->save($data);
-			$res=$cart_info['id'];
-		}else{
-			$data['pid']=intval($_POST['ppid']);
-			$data['pro_id']=intval($_REQUEST['pid']);
-			$data['num']=intval($_POST['num']);
-			$data['buff']=$shu;
-			$data['addtime']=time();
-			$data['uid']=intval($_POST['uid']);
-			$data['shop_id']=intval($check_info['shop_id']);
-			$data['type']=2;
-			//如果产品有属性，则存入属性设置的价格;否则存产品表的价格
-			if ($check_info['pro_buff']) {
-				$data['price'] = $_POST['yh_price'];
-			}else{
-				$data['price'] = M('attr_spec_price_store')->where('id="'.$_REQUEST['ppid'].'"')->getField('price_yh');
+		$stype = intval($_REQUEST['stype']);
+		if($stype == 2){
+			//加入购物车
+			$check = $this->check_cart(intval($_POST['pid']));
+			if ($check['status']==0) {
+				echo json_encode(array('status'=>0,'err'=>$check['err']));
+				exit;
 			}
 
-			$res=$shpp->add($data);
-		}
+			$check_info = M('product')->where('id='.intval($_POST['pid']).' AND del=0 AND is_down=0')->find();
+			$shpp=M("shopping_char");
+			$shu=trim($_POST['val'],',');
 
+			//判断购物车内是否已经存在该商品
+			$data = array();
+			$cart_info = $shpp->where('type=2 AND pid='.intval($_POST['ppid']).' AND uid='.intval($_POST['uid']))->field('id,num')->find();
+			if ($cart_info) {
+				$data['num'] = intval($cart_info['num'])+intval($_POST['num']);
+				$shpp->where('id='.intval($cart_info['id']))->save($data);
+				$res=$cart_info['id'];
+			}else{
+				$data['pid']=intval($_POST['ppid']);
+				$data['pro_id']=intval($_REQUEST['pid']);
+				$data['num']=intval($_POST['num']);
+				$data['buff']=$shu;
+				$data['addtime']=time();
+				$data['uid']=intval($_POST['uid']);
+				$data['shop_id']=intval($check_info['shop_id']);
+				$data['type']=2;
+				//如果产品有属性，则存入属性设置的价格;否则存产品表的价格
+				if ($check_info['pro_buff']) {
+					$data['price'] = $_POST['yh_price'];
+				}else{
+					$data['price'] = M('attr_spec_price_store')->where('id="'.$_REQUEST['ppid'].'"')->getField('price_yh');
+				}
+
+				$res=$shpp->add($data);
+			}
+		}else{
+			//加入购物车
+
+			$check_info = M('product2')->where('id='.intval($_POST['pid']).' AND del=0')->find();
+			$shpp=M("shopping_char");
+			$shu=trim($_POST['val'],',');
+			//判断购物车内是否已经存在该商品
+			$data = array();
+			$cart_info = $shpp->where('type=1 AND pid='.intval($_POST['pid']).' AND uid='.intval($_POST['uid']))->field('id,num')->find();
+			if ($cart_info) {
+				$data['num'] = intval($cart_info['num'])+intval($_POST['num']);
+				$shpp->where('id='.intval($cart_info['id']))->save($data);
+				$res=$cart_info['id'];
+			}else{
+				$data['pid']=intval($_POST['pid']);
+				$data['pro_id']=0;
+				$data['num']=intval($_POST['num']);
+				$data['buff']=$shu;
+				$data['addtime']=time();
+				$data['uid']=intval($_POST['uid']);
+				$data['shop_id']=intval($check_info['shop_id']);
+				$data['type']=1;
+				$data['price'] = $check_info['price'];
+				$res=$shpp->add($data);
+			}
+		}
+		
 		if($res){
 			echo json_encode(array('status'=>1,'cart_id'=>$res)); //该商品已成功加入您的购物车
 			exit;

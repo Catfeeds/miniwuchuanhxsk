@@ -1,0 +1,294 @@
+[ 2017-12-07T13:58:40+08:00 ] ::1 /miniwuchuanhxsk/index.php/Ht/Order/index.html
+NOTIC: [8] Use of undefined constant SHOW_PAGE_TRACE - assumed 'SHOW_PAGE_TRACE' F:\phpStudy\WWW\miniwuchuanhxsk\App\Common\Conf\debug.php 第 4 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000057s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001368s ]
+NOTIC: [2048] Declaration of Ht\Controller\OrderController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `lr_order` [ RunTime:0.0032s ]
+SQL: SHOW COLUMNS FROM `lr_order_product` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 32 行.
+NOTIC: [8] Undefined index: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 35 行.
+NOTIC: [8] Undefined index: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 36 行.
+NOTIC: [8] Undefined index: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 37 行.
+NOTIC: [8] Undefined index: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 38 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `lr_order` WHERE ( 1=1 AND del=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lr_order` WHERE ( 1=1 AND del=0 ) ORDER BY id desc LIMIT 0,25   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `lr_user` [ RunTime:0.0035s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000136s ]
+NOTIC: [8] Undefined variable: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 21 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 32 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 33 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 44 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 45 行.
+NOTIC: [8] Undefined variable: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 51 行.
+NOTIC: [8] Undefined variable: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 52 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033906s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033950s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000506s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000543s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000736s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000773s ]
+
+[ 2017-12-07T13:58:44+08:00 ] ::1 /miniwuchuanhxsk/index.php/Ht/Order/show.html?oid=4
+NOTIC: [8] Use of undefined constant SHOW_PAGE_TRACE - assumed 'SHOW_PAGE_TRACE' F:\phpStudy\WWW\miniwuchuanhxsk\App\Common\Conf\debug.php 第 4 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000053s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000712s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000774s ]
+NOTIC: [2048] Declaration of Ht\Controller\OrderController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `lr_order` [ RunTime:0.0029s ]
+SQL: SHOW COLUMNS FROM `lr_order_product` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `lr_order` WHERE ( id=4 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `lr_order_product` WHERE ( order_id=4 )  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000092s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000139s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029567s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029624s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000610s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001501s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001552s ]
+
+[ 2017-12-07T13:58:54+08:00 ] ::1 /miniwuchuanhxsk/index.php/Ht/Order/index.html
+NOTIC: [8] Use of undefined constant SHOW_PAGE_TRACE - assumed 'SHOW_PAGE_TRACE' F:\phpStudy\WWW\miniwuchuanhxsk\App\Common\Conf\debug.php 第 4 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000053s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000623s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+NOTIC: [2048] Declaration of Ht\Controller\OrderController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `lr_order` [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `lr_order_product` [ RunTime:0.0027s ]
+NOTIC: [8] Undefined index: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 32 行.
+NOTIC: [8] Undefined index: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 35 行.
+NOTIC: [8] Undefined index: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 36 行.
+NOTIC: [8] Undefined index: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 37 行.
+NOTIC: [8] Undefined index: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 38 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `lr_order` WHERE ( 1=1 AND del=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lr_order` WHERE ( 1=1 AND del=0 ) ORDER BY id desc LIMIT 0,25   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lr_user` [ RunTime:0.0027s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000085s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000148s ]
+NOTIC: [8] Undefined variable: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 21 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 32 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 33 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 44 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 45 行.
+NOTIC: [8] Undefined variable: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 51 行.
+NOTIC: [8] Undefined variable: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 52 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010169s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010213s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000434s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000469s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000756s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000794s ]
+
+[ 2017-12-07T13:58:57+08:00 ] ::1 /miniwuchuanhxsk/index.php/Ht/Order/show.html?oid=1
+NOTIC: [8] Use of undefined constant SHOW_PAGE_TRACE - assumed 'SHOW_PAGE_TRACE' F:\phpStudy\WWW\miniwuchuanhxsk\App\Common\Conf\debug.php 第 4 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000053s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000678s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000766s ]
+NOTIC: [2048] Declaration of Ht\Controller\OrderController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `lr_order` [ RunTime:0.0029s ]
+SQL: SHOW COLUMNS FROM `lr_order_product` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `lr_order` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lr_order_product` WHERE ( order_id=1 )  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000120s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000169s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010711s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010778s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000452s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000734s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000776s ]
+
+[ 2017-12-07T13:59:06+08:00 ] ::1 /miniwuchuanhxsk/index.php/Ht/Order/index.html
+NOTIC: [8] Use of undefined constant SHOW_PAGE_TRACE - assumed 'SHOW_PAGE_TRACE' F:\phpStudy\WWW\miniwuchuanhxsk\App\Common\Conf\debug.php 第 4 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000054s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000699s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000761s ]
+NOTIC: [2048] Declaration of Ht\Controller\OrderController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `lr_order` [ RunTime:0.0031s ]
+SQL: SHOW COLUMNS FROM `lr_order_product` [ RunTime:0.0027s ]
+NOTIC: [8] Undefined index: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 32 行.
+NOTIC: [8] Undefined index: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 35 行.
+NOTIC: [8] Undefined index: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 36 行.
+NOTIC: [8] Undefined index: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 37 行.
+NOTIC: [8] Undefined index: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 38 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `lr_order` WHERE ( 1=1 AND del=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lr_order` WHERE ( 1=1 AND del=0 ) ORDER BY id desc LIMIT 0,25   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lr_user` [ RunTime:0.0034s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000080s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000129s ]
+NOTIC: [8] Undefined variable: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 21 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 32 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 33 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 44 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 45 行.
+NOTIC: [8] Undefined variable: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 51 行.
+NOTIC: [8] Undefined variable: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 52 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011296s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011343s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000447s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000483s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000737s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000776s ]
+
+[ 2017-12-07T13:59:07+08:00 ] ::1 /miniwuchuanhxsk/index.php/Ht/Order/show.html?oid=2
+NOTIC: [8] Use of undefined constant SHOW_PAGE_TRACE - assumed 'SHOW_PAGE_TRACE' F:\phpStudy\WWW\miniwuchuanhxsk\App\Common\Conf\debug.php 第 4 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000053s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000703s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000759s ]
+NOTIC: [2048] Declaration of Ht\Controller\OrderController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `lr_order` [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `lr_order_product` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `lr_order` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lr_order_product` WHERE ( order_id=2 )  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+NOTIC: [8] Undefined index: pro_guide F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 168 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000095s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000151s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009459s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009510s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000504s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000550s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000843s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000890s ]
+
+[ 2017-12-07T13:59:16+08:00 ] ::1 /miniwuchuanhxsk/index.php/Ht/Order/index.html
+NOTIC: [8] Use of undefined constant SHOW_PAGE_TRACE - assumed 'SHOW_PAGE_TRACE' F:\phpStudy\WWW\miniwuchuanhxsk\App\Common\Conf\debug.php 第 4 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000052s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000620s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000672s ]
+NOTIC: [2048] Declaration of Ht\Controller\OrderController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 4 行.
+SQL: SHOW COLUMNS FROM `lr_order` [ RunTime:0.0029s ]
+SQL: SHOW COLUMNS FROM `lr_order_product` [ RunTime:0.0026s ]
+NOTIC: [8] Undefined index: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 32 行.
+NOTIC: [8] Undefined index: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 35 行.
+NOTIC: [8] Undefined index: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 36 行.
+NOTIC: [8] Undefined index: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 37 行.
+NOTIC: [8] Undefined index: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Ht\Controller\OrderController.class.php 第 38 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `lr_order` WHERE ( 1=1 AND del=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lr_order` WHERE ( 1=1 AND del=0 ) ORDER BY id desc LIMIT 0,25   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lr_user` [ RunTime:0.0028s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `name` FROM `lr_user` WHERE ( id=3 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000079s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000127s ]
+NOTIC: [8] Undefined variable: shop_id F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 21 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 32 行.
+NOTIC: [8] Undefined variable: pay_type F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 33 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 42 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 44 行.
+NOTIC: [8] Undefined variable: pay_status F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 45 行.
+NOTIC: [8] Undefined variable: start_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 51 行.
+NOTIC: [8] Undefined variable: end_time F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 52 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+NOTIC: [8] Undefined index: name F:\phpStudy\WWW\miniwuchuanhxsk\App\Runtime\Cache\Ht\bb73bcf6e97ca0b1f5a53051a7857618.php 第 67 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010702s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010766s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000474s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000511s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000765s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000804s ]
+

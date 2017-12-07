@@ -6,7 +6,7 @@ class IndexController extends PublicController {
 	//  首页数据接口
 	//***************************
     public function index(){
-        $ggtop=M('guanggao')->where('position = 1')->order('sort desc,id asc')->field('id,name,photo,type,action')->limit(10)->select();
+        $ggtop=M('guanggao')->where('position = 1')->order('sort desc,id asc')->field('id,name,photo,type,action')->select();
         foreach ($ggtop as $k => $v) {
             $ggtop[$k]['photo']=__DATAURL__.$v['photo'];
             $ggtop[$k]['name']=urlencode($v['name']);
@@ -22,7 +22,7 @@ class IndexController extends PublicController {
     public function eatIndex(){
     	//如果缓存首页没有数据，那么就读取数据库
     	/***********获取首页顶部轮播图************/
-    	$ggtop=M('guanggao')->order('sort desc,id asc')->field('id,name,photo,type,action')->limit(10)->select();
+    	$ggtop=M('guanggao')->where('position = 3')->order('sort desc,id asc')->field('id,name,photo,type,action')->select();
 		foreach ($ggtop as $k => $v) {
 			$ggtop[$k]['photo']=__DATAURL__.$v['photo'];
 			$ggtop[$k]['name']=urlencode($v['name']);
@@ -86,6 +86,29 @@ class IndexController extends PublicController {
 
     	echo json_encode(array('ggtop'=>$ggtop,'procat'=>$procat,'prolist'=>$pro_list,'brand'=>$brand,'shop'=>$shop,'renqi'=>$renqi,'tubiao'=>$tubiao));
     	exit();
+    }
+
+     public function playIndex(){
+        $ggtop=M('guanggao')->where('position = 2')->order('sort desc,id asc')->field('id,name,photo,type,action')->select();
+        foreach ($ggtop as $k => $v) {
+            $ggtop[$k]['photo']=__DATAURL__.$v['photo'];
+            $ggtop[$k]['name']=urlencode($v['name']);
+        }
+
+        $list = M('product2')->where('del=0')->select();
+        if($list){
+            foreach($list as $k => $v){
+                $list[$k]['photo']=__DATAURL__.$v['photo'];
+            }
+        }
+        $tj = M('product2')->where('del=0 AND is_recomed = 1')->select();
+        if($tj){
+            foreach($tj as $k => $v){
+                $tj[$k]['photo']=__DATAURL__.$v['photo'];
+            }
+        }
+        echo json_encode(array('ggtop'=>$ggtop,'list'=>$list,'tj'=>$tj));
+        exit();
     }
     /**
      * [getlist 加载更多]

@@ -24,7 +24,7 @@ class ManageController extends PublicController{
 			$where .= ' AND is_recomed='.intval($tuijian);
 			$this->assign('tuijian',$tuijian);
 		}
-		$where .= " AND (pro_type=2 OR pro_type=3) AND del<1";
+		$where .= " AND del<1";
 		// $shop_id>0 ? $where.=" AND shop_id=$shop_id" : null;
 
 		define('rows',20);
@@ -77,7 +77,7 @@ class ManageController extends PublicController{
 			
 			$array=array(
 				'name'=>$_POST['name'] ,
-				'pro_type' => 2,
+				'pro_type' => 1,
 				'intro'=>$_POST['intro'] ,
 				'shop_id'=> intval($_POST['shop_id']) ,//所属店铺
 				'price'=>(float)$_POST['price'] , 

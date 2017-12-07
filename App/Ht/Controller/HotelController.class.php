@@ -24,17 +24,17 @@ class HotelController extends PublicController{
 			$where .= ' AND is_recomed='.intval($tuijian);
 			$this->assign('tuijian',$tuijian);
 		}
-		$where .= " AND del<1";
+		$where .= "  AND pro_type=3 AND del<1";
 		// $shop_id>0 ? $where.=" AND shop_id=$shop_id" : null;
 
 		define('rows',20);
-		$count=M('hotel')->where($where)->count();
+		$count=M('product2')->where($where)->count();
 		$rows=ceil($count/rows);
 		$page=(int)$_GET['page'];
 		$page<0?$page=0:'';
 		$limit=$page*rows;
 		$page_index=$this->page_index($count,$rows,$page);
-		$list = M('hotel')->where($where)->order('addtime desc')->limit($limit,rows)->select();
+		$list = M('product2')->where($where)->order('addtime desc')->limit($limit,rows)->select();
 		// foreach ($list as $k => $v) {
 		// 	$list[$k]['shangchang'] = M('shangchang')->where('id='.intval($v['shop_id']))->getField('name');
 		// }
@@ -63,23 +63,23 @@ class HotelController extends PublicController{
 		try{	
 			//如果不是管理员则查询商家会员的店铺ID
 			$id = intval($_POST['pro_id']);
+			// if (!intval($_POST['shop_id'])) {
+			// 	$this->error('请选择所属商家.');
+			// 	exit();
+			// }
+			
 			$array=array(
 				'name'=>$_POST['name'] ,
+				'pro_type' => 3,
 				'intro'=>$_POST['intro'] ,
 				'shop_id'=> intval($_POST['shop_id']) ,//所属店铺
-				'brand_id'=> intval($_POST['brand_id']) ,//产品品牌ID
 				'price'=>(float)$_POST['price'] , 
+				'marketprice'=>(float)$_POST['marketprice'] , 
 				'stock'=>(int)$_POST['stock'] ,			//库存
 				'content'=>$_POST['content'] , 
-				'wifi'=>$_POST['wifi'] ,
-				'bathroom'=>$_POST['bathroom'] ,
-				'windows'=>$_POST['windows'] ,
-				'people'=>$_POST['people'] ,
-				'floor'=>$_POST['floor'] ,
-				'area'=>$_POST['area'] ,
-				'bedtype'=>$_POST['bedtype'] ,
-				'breakfast'=>$_POST['breakfast'] ,
+				'renqi'=>(int)$_POST['renqi'] ,
 			);
+
 			  
 			//判断产品详情页图片是否有设置宽度，去掉重复的100%
 			if(strpos($array['content'],'width="100%"')){
@@ -91,13 +91,13 @@ class HotelController extends PublicController{
 			//上传产品小图
 			if (!empty($_FILES["photo"]["tmp_name"])) {
 					//文件上传
-					$info = $this->upload_images($_FILES["photo"],array('jpg','png','jpeg'),"hotel/".date(Ymd));
+					$info = $this->upload_images($_FILES["photo"],array('jpg','png','jpeg'),"product/".date(Ymd));
 				    if(!is_array($info)) {// 上传错误提示错误信息
 				        $this->error($info);
 				        exit();
 				    }else{// 上传成功 获取上传文件信息
 					    $array['photo'] = 'UploadFiles/'.$info['savepath'].$info['savename'];
-					    $xt = M('hotel')->where('id='.intval($id))->field('photo')->find();
+					    $xt = M('product2')->where('id='.intval($id))->field('photo')->find();
 					    if ($id && $xt['photo']) {
 					    	$img_url = "Data/".$xt['photo'];
 							if(file_exists($img_url)) {
@@ -130,24 +130,28 @@ class HotelController extends PublicController{
 						$up_arr[$k]['size'] = $val;
 					}
 			}
-			if ($up_arr) {
+
+				$adv_str = '';
+				if ($up_arr) {
 					$res=array();
-					$adv_str = '';
 					foreach ($up_arr as $key => $value) {
-						$res = $this->upload_images($value,array('jpg','png','jpeg'),"hotel/advimg/".date(Ymd));
+						$res = $this->upload_images($value,array('jpg','png','jpeg'),"product/advimg/".date(Ymd));
 					    if(is_array($res)) {
 					    	// 上传成功 获取上传文件信息保存数据库
 					    	$adv_str .= ','.'UploadFiles/'.$res['savepath'].$res['savename'];
 					    }
 					}
-					$array['adv_img'] = $adv_str;
-			}
+				}
 			
 			//执行添加
 			if(intval($id)>0){
-				$imgs = M('hotel')->where('id='.intval($id))->getField('adv_img');
-				if ($imgs && $array['adv_img']) {
-					$array['adv_img'] = $imgs.$array['adv_img'];
+				$adv_img = M('product2')->where('id='.intval($id))->getField('adv_img');
+				if ($adv_str!='') {
+					if ($adv_img!='') {
+						$array['adv_img'] = $adv_img.$adv_str;
+					}else{
+						$array['adv_img'] = $adv_str;
+					}
 				}
 
 				//将空数据排除掉，防止将原有数据空置
@@ -157,10 +161,10 @@ class HotelController extends PublicController{
 					}
 				}
 
-				$sql = M('hotel')->where('id='.intval($id))->save($array);
+				$sql = M('product2')->where('id='.intval($id))->save($array);
 			}else{
 				$array['addtime']=time();
-				$sql = M('hotel')->add($array);
+				$sql = M('product2')->add($array);
 				$id=$sql;
 			}
 
@@ -180,9 +184,9 @@ class HotelController extends PublicController{
 		//=========================
 		// 查询产品信息
 		//=========================
-		$pro_allinfo= $id>0 ? M('hotel')->where('id='.$id)->find() : "";
+		$pro_allinfo= $id>0 ? M('product2')->where('id='.$id)->find() : "";
 		//商场信息
-		$shangchang= $pro_allinfo ? M('shangchang')->where('id='.intval($pro_allinfo['shop_id']))->find() : "";
+		// $shangchang= $pro_allinfo ? M('shangchang')->where('id='.intval($pro_allinfo['shop_id']))->find() : "";
 
 		//获取所有商品轮播图
 		if ($pro_allinfo['adv_img']) {
@@ -206,7 +210,7 @@ class HotelController extends PublicController{
 		// 将变量输出
 		//=============	
 		$this->assign('pro_allinfo',$pro_allinfo);
-		$this->assign('shangchang',$shangchang);
+		// $this->assign('shangchang',$shangchang);
 		$this->display();
 
 	}
@@ -217,7 +221,7 @@ class HotelController extends PublicController{
 	public function img_del(){
 		$img_url = trim($_REQUEST['img_url']);
 		$pro_id = intval($_REQUEST['pro_id']);
-		$check_info = M('hotel')->where('id='.intval($pro_id).' AND del=0')->find();
+		$check_info = M('product2')->where('id='.intval($pro_id).' AND del=0')->find();
 		if (!$check_info) {
 			echo json_encode(array('status'=>0,'err'=>'产品不存在或已下架删除！'));
 			exit();
@@ -232,7 +236,7 @@ class HotelController extends PublicController{
 			}
 			$data = array();
 			$data['adv_img'] = implode(',', $arr);
-			$res = M('hotel')->where('id='.intval($pro_id))->save($data);
+			$res = M('product2')->where('id='.intval($pro_id))->save($data);
 			if (!$res) {
 				echo json_encode(array('status'=>0,'err'=>'操作失败！'.__LINE__));
 				exit();
@@ -256,7 +260,7 @@ class HotelController extends PublicController{
 	//***************************
 	public function set_tj(){
 		$pro_id = intval($_REQUEST['pro_id']);
-		$tj_update=M('hotel')->field('shop_id,is_recomed')->where('id='.intval($pro_id).' AND del=0')->find();
+		$tj_update=M('product2')->field('shop_id,is_recomed')->where('id='.intval($pro_id).' AND del=0')->find();
 		if (!$tj_update) {
 			$this->error('产品不存在或已下架删除！');
 			exit();
@@ -273,7 +277,7 @@ class HotelController extends PublicController{
 		//dump($tj_update);
 		$data = array();
 		$data['is_recomed'] = $tj_update['is_recomed']==1 ? 0 : 1;
-		$up = M('hotel')->where('id='.intval($pro_id))->save($data);
+		$up = M('product2')->where('id='.intval($pro_id))->save($data);
 		if ($up) {
 			$this->redirect('index',array('page'=>intval($_REQUEST['page'])));
 			exit();
@@ -290,7 +294,7 @@ class HotelController extends PublicController{
 	public function del()
 	{
 		$id = intval($_REQUEST['did']);
-		$info = M('hotel')->where('id='.intval($id))->find();
+		$info = M('product2')->where('id='.intval($id))->find();
 		if (!$info) {
 			$this->error('产品信息错误.'.__LINE__);
 			exit();
@@ -303,7 +307,7 @@ class HotelController extends PublicController{
 
 		$data=array();
 		$data['del'] = $info['del'] == '1' ?  0 : 1;
-		$up = M('hotel')->where('id='.intval($id))->save($data);
+		$up = M('product2')->where('id='.intval($id))->save($data);
 		if ($up) {
 			$this->redirect('index',array('page'=>intval($_REQUEST['page'])));
 			exit();

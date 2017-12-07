@@ -240,7 +240,17 @@ class PaymentController extends PublicController {
 		    $zprice = floatval($pro[$k]['price']*$pro[$k]['num']);
 		    $pro[$k]['zprice']=$zprice;
 		    $price+=$zprice;
-		    $pro[$k]['photo_x'] = __DATAURL__.$pro[$k]['photo_x'];
+		    
+		    if($pro[$k]['photo_x']){
+		    	$pro[$k]['photo_x'] = __DATAURL__.$pro[$k]['photo_x'];
+		    }else{
+		    	$temp_pid = $shopping->where('id='.intval($v))->getField('pid');
+		    	$pro[$k]['photo_x'] = __DATAURL__.M('product2')->where('id='.intval($temp_pid))->getField('photo');
+		    }
+		    if(!$pro[$k]['name']){
+		    	$temp_pid = $shopping->where('id='.intval($v))->getField('pid');
+		    	$pro[$k]['name'] = M('product2')->where('id='.intval($temp_pid))->getField('name');
+		    }
 			// $pro['zprice']+=$pro[$k]['zprice'];
 			// $buff_text='';
 			// if($pro[$k]['buff']){
@@ -305,16 +315,7 @@ class PaymentController extends PublicController {
 
 		  	$cart_id = explode(',', $cart_id);
 			$shop=array();
-			// foreach($cart_id as $ke => $vl){
-			// 	$shop[$ke]=$shopping->where(''.$qz.'shopping_char.uid='.intval($uid).' and '.$qz.'shopping_char.id='.$vl)->join('LEFT JOIN __PRODUCT__ ON __PRODUCT__.id=__SHOPPING_CHAR__.pid')->field(''.$qz.'shopping_char.pid,'.$qz.'shopping_char.num,'.$qz.'shopping_char.shop_id,'.$qz.'shopping_char.buff,'.$qz.'shopping_char.price,'.$qz.'product.price_yh')->find();
-			// 	$num+=$shop[$ke]['num'];
-   //              if($shop[$ke]['buff']!=''){
-			//     	$ozprice+=$shop[$ke]['price']*$shop[$ke]['num'];
-			//     }else{
-			//     	$shop[$ke]['price']=$shop[$ke]['price_yh'];
-			//     	$ozprice+=$shop[$ke]['price']*$shop[$ke]['num'];
-			//     }
-			// }
+			
 			foreach($cart_id as $ke => $vl){
 				$shop[$ke]=$shopping->where(''.$qz.'shopping_char.uid='.intval($uid).' and '.$qz.'shopping_char.id='.$vl)->join('LEFT JOIN __PRODUCT__ ON __PRODUCT__.id=__SHOPPING_CHAR__.pid')->field(''.$qz.'shopping_char.pid,'.$qz.'shopping_char.num,'.$qz.'shopping_char.shop_id,'.$qz.'shopping_char.buff,'.$qz.'shopping_char.price,'.$qz.'product.price_yh')->find();
 				$num+=$shop[$ke]['num'];
@@ -411,9 +412,20 @@ class PaymentController extends PublicController {
 					$date = array();
 			        $date['pid']=$shops[$key]['pid'];
 					$date['name']=$shops[$key]['name'];
-			        $date['order_id']=$result;
 					$date['price']=$shops[$key]['price'];
+					if(!$date['name']){
+						$temp_pid = M('shopping_char')->where('id='.intval($var))->getField('pid');
+						$date['name'] = M('product2')->where('id='.intval($temp_pid))->getField('name');
+						$date['price'] = M('product2')->where('id='.intval($temp_pid))->getField('price');
+						$date['type'] = 1;
+					}
+			        $date['order_id']=$result;
+					
 					$date['photo_x']=$shops[$key]['photo_x'];
+					if(!$date['photo_x']){
+						$temp_pid = M('shopping_char')->where('id='.intval($var))->getField('pid');
+						$date['photo_x'] = M('product2')->where('id='.intval($temp_pid))->getField('photo');
+					}
 					$date['pro_buff']=trim($buff_text,' ');
 					$date['addtime']=time();
 					$date['num']=$shops[$key]['num'];
@@ -423,11 +435,21 @@ class PaymentController extends PublicController {
 						throw new \Exception("下单 失败！".__LINE__);
 					}
 					//检查产品是否存在，并修改库存
-					$check_pro = $product->where('id='.intval($date['pid']).' AND del=0 AND is_down=0')->field('num,shiyong')->find();
-					$up = array();
-					$up['num'] = intval($check_pro['num'])-intval($date['num']);
-					$up['shiyong'] = intval($check_pro['shiyong'])+intval($date['num']);
-					$product->where('id='.intval($date['pid']))->save($up);
+					$stype = M('shopping_char')->where('id='.intval($var))->getField('type');
+					if($stype == 2){
+						$check_pro = $product->where('id='.intval($date['pid']).' AND del=0 AND is_down=0')->field('num,shiyong')->find();
+						$up = array();
+						$up['num'] = intval($check_pro['num'])-intval($date['num']);
+						$up['shiyong'] = intval($check_pro['shiyong'])+intval($date['num']);
+						$product->where('id='.intval($date['pid']))->save($up);
+					}else{
+						$check_pro = M('product2')->where('id='.intval($date['pid']).' AND del=0')->field('stock,salenum')->find();
+						$up = array();
+						$up['stock'] = intval($check_pro['stock'])-intval($date['num']);
+						$up['salenum'] = intval($check_pro['salenum'])+intval($date['num']);
+						M('product2')->where('id='.intval($date['pid']))->save($up);
+					}
+					
 	            	//echo  $product->getLastSql();
 	            	//删除购物车数据
 	            	$shopping->where('uid='.intval($uid).' AND id='.intval($var))->delete();

@@ -663,6 +663,27 @@ class ProductController extends PublicController {
 		echo json_encode(array('status'=>1,'content'=>$content,'pro'=>$pro,'lun'=>$lun,'quan'=>$quan,'param'=>$param,'prodetail'=>$prodetail2,'shu'=>$shu,'guei'=>$guei,'num'=>$num,'num2'=>$num2,'ppid'=>$ppid));
 	}
 
+	public function detail2(){
+		$pro_id = intval($_REQUEST['pro_id']);
+		$pro = M('product2')->where('id="'.$pro_id.'" AND del=0')->find();
+		if(!$pro){
+			echo json_encode(array('status'=>0,'err'=>'商品不存在或已下架！'));
+			exit();
+		}
+		$content = str_replace(C('content.dir'), __DATAURL__, $pro['content']);
+		$pro['content']=html_entity_decode($content, ENT_QUOTES ,'utf-8');
+		if($pro['adv_img']){
+			$lun = explode(',',trim($pro['adv_img'],','));
+	        foreach($lun as $k => $v){
+	        	$lun[$k] =  __DATAURL__.$v;
+	        }
+		}else{
+			$lun[0] =  __DATAURL__.$pro['photo'];
+		}
+		echo json_encode(array('status'=>1,'pro'=>$pro,'lun'=>$lun,'content'=>$content));
+		exit();
+	}
+
 	public function getPrice(){
 		$attr_value_id = intval($_REQUEST['attr_value_id']);
 		$spec_value_id = intval($_REQUEST['spec_value_id']);
