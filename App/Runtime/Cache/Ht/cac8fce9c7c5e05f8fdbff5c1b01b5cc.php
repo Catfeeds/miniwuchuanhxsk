@@ -1,14 +1,14 @@
-
+<?php if (!defined('THINK_PATH')) exit();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>后台管理</title>
-<link href="__PUBLIC__/ht/css/main.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="__PUBLIC__/ht/js/jquery.js"></script>
-<script type="text/javascript" src="__PUBLIC__/ht/js/action.js"></script>
-<script type="text/javascript" src="__PUBLIC__/plugins/xheditor/xheditor-1.2.1.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/plugins/xheditor/xheditor_lang/zh-cn.js"></script>
+<link href="/miniwuchuanhxsk/Public/ht/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/miniwuchuanhxsk/Public/ht/js/jquery.js"></script>
+<script type="text/javascript" src="/miniwuchuanhxsk/Public/ht/js/action.js"></script>
+<script type="text/javascript" src="/miniwuchuanhxsk/Public/plugins/xheditor/xheditor-1.2.1.min.js"></script>
+<script type="text/javascript" src="/miniwuchuanhxsk/Public/plugins/xheditor/xheditor_lang/zh-cn.js"></script>
 <style>
 .dx2{color:#090; font-size:16px;  border-bottom:1px solid #CCC; width:100% !important; padding-bottom:8px;}
 .img-err {
@@ -60,31 +60,31 @@
 
 <div class="aaa_pts_show_2">
     <div>
-       <div class="aaa_pts_4"><a href="{:U('index')}">全部套餐</a></div>
-       <div class="aaa_pts_4"><a href="{:U('add')}">添加套餐</a></div>
+       <div class="aaa_pts_4"><a href="<?php echo U('index');?>">全部套餐</a></div>
+       <div class="aaa_pts_4"><a href="<?php echo U('add');?>">添加套餐</a></div>
     </div>
     <div class="aaa_pts_3">
-		<form action="{:U('add')}" method="post" onsubmit="return ac_from();" enctype="multipart/form-data">
+		<form action="<?php echo U('add');?>" method="post" onsubmit="return ac_from();" enctype="multipart/form-data">
 		<ul class="aaa_pts_5">
 			<li>
 				<div class="d1">套餐名称:</div>
 				<div>
-					<input class="inp_1" name="name" id="name" value="{$pro_allinfo.name}"/>
+					<input class="inp_1" name="name" id="name" value="<?php echo ($pro_allinfo["name"]); ?>"/>
 				</div>
 			</li>
       <li>
         <div class="d1">套餐简介:</div>
         <div>
-          <input class="inp_1" name="intro" style="width:350px" id="intro" value="{$pro_allinfo.intro}"/>
+          <input class="inp_1" name="intro" style="width:350px" id="intro" value="<?php echo ($pro_allinfo["intro"]); ?>"/>
         </div>
       </li>
 
       <!-- <li>
         <div class="d1">所属商家:</div>
         <div>
-          <input class="inp_1" id="partner" value="{$shangchang.name}" disabled="disabled"/>
-          <input type="hidden" name="shop_id" id="shop_id" value="{$pro_allinfo.shop_id}"/>
-          <input type="button" value="选择商家" class="aaa_pts_web_3" style="margin-left:15px;" onclick="win_open('{:U('get_shop')}',1280,800)">
+          <input class="inp_1" id="partner" value="<?php echo ($shangchang["name"]); ?>" disabled="disabled"/>
+          <input type="hidden" name="shop_id" id="shop_id" value="<?php echo ($pro_allinfo["shop_id"]); ?>"/>
+          <input type="button" value="选择商家" class="aaa_pts_web_3" style="margin-left:15px;" onclick="win_open('<?php echo U('get_shop');?>',1280,800)">
         </div>
        </li> -->
 
@@ -93,9 +93,7 @@
           <div>
             <select class="inp_1" name="brand_id" id="brand_id" style="width:150px;margin-right:5px;">
                 <option value="">选择品牌</option>
-                <volist name="brand_list" id="v">
-                  <option value="{$v.id}" <if condition="$v.id eq $pro_allinfo['brand_id']">selected="selected"</if>>-- {$v.name}</option>
-                </volist>
+                <?php if(is_array($brand_list)): $i = 0; $__LIST__ = $brand_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>" <?php if($v["id"] == $pro_allinfo['brand_id']): ?>selected="selected"<?php endif; ?>>-- <?php echo ($v["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
               </select>没有可不选
           </div>
         </li> -->
@@ -104,13 +102,13 @@
          <li class="product">
             <div class="d1">门市价:</div>
             <div>
-              <input class="inp_1 inp_6" name="marketprice" id="marketprice" value="{$pro_allinfo.marketprice}"/>
+              <input class="inp_1 inp_6" name="marketprice" id="marketprice" value="<?php echo ($pro_allinfo["marketprice"]); ?>"/>
             </div>
          </li>
          <li class="product">
             <div class="d1">现  价:</div>
             <div>
-              <input class="inp_1 inp_6" name="price" id="price" value="{$pro_allinfo.price}"/>
+              <input class="inp_1 inp_6" name="price" id="price" value="<?php echo ($pro_allinfo["price"]); ?>"/>
             </div>
          </li>
         <li class="product"><div class="d1 dx2">图片信息</div></li>
@@ -121,7 +119,7 @@
           <div class="d1">缩略图:</div>
            <div>
             <?php if ($pro_allinfo['photo']) { ?>
-                  <img src="__DATA__/<?php echo $pro_allinfo['photo']; ?>" width="80" height="80" style="margin-bottom: 3px;" />
+                  <img src="/miniwuchuanhxsk/Data/<?php echo $pro_allinfo['photo']; ?>" width="80" height="80" style="margin-bottom: 3px;" />
                   <br />
               <?php } ?>
               <input type="file" name="photo" id="photo" />
@@ -136,7 +134,7 @@
           <?php foreach ($img_str as $v) { ?>
           <div>
             <div class="img-err" title="删除" onclick="del_img('<?php echo $v; ?>',this);">×</div>
-            <img src="<?php echo '__DATA__/'.$v; ?>" width="100" height="100">
+            <img src="<?php echo '/miniwuchuanhxsk/Data/'.$v; ?>" width="100" height="100">
           </div>
           <?php } ?>
         </li>
@@ -157,7 +155,7 @@
          <li>
             <div class="d1">备注介绍:</div>
             <div>
-              <textarea class="inp_1 inp_2" name="content" id="content"/>{$pro_allinfo.content}</textarea>
+              <textarea class="inp_1 inp_2" name="content" id="content"/><?php echo ($pro_allinfo["content"]); ?></textarea>
             </div>
          </li>
         <li>
@@ -174,7 +172,7 @@
         </li> -->
 
       <li><input type="submit" name="submit" value="提交" class="aaa_pts_web_3" border="0" id="aaa_pts_web_s">
-          <input type="hidden" name="pro_id" id='pro_id' value="{$pro_allinfo.id}">
+          <input type="hidden" name="pro_id" id='pro_id' value="<?php echo ($pro_allinfo["id"]); ?>">
       </li>
       </ul>
       </form>
@@ -182,7 +180,7 @@
     </div>
     
 </div>
-<script type="text/javascript" src="__PUBLIC__/ht/js/product.js"></script>
+<script type="text/javascript" src="/miniwuchuanhxsk/Public/ht/js/product.js"></script>
 <script>
 function upadd(obj){
   //alert('aaa');
@@ -192,7 +190,7 @@ function upadd(obj){
 
 function getcid(){
   var cateid = $('#cateid').val();
-  $.post('{:U("getcid")}',{cateid:cateid},function(data){
+  $.post('<?php echo U("getcid");?>',{cateid:cateid},function(data){
       if(data.catelist!=''){
         var htmls = '<option value="">二级分类</option>';
         var cate = data.catelist;
@@ -212,7 +210,7 @@ function getcid(){
 function del_img(img,obj){
   var pro_id = $('#pro_id').val();
   if (confirm('是否确认删除？')) {
-    $.post('{:U("img_del")}',{img_url:img,pro_id:pro_id},function(data){
+    $.post('<?php echo U("img_del");?>',{img_url:img,pro_id:pro_id},function(data){
       if(data.status==1){
         $(obj).parent().remove();
         return false;
@@ -249,7 +247,7 @@ function ac_from(){
 //初始化编辑器
 $('#content').xheditor({
   skin:'nostyle' ,
-  upImgUrl:'{:U("Upload/xheditor")}'
+  upImgUrl:'<?php echo U("Upload/xheditor");?>'
 });
 </script>
 </body>
